@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcolo Stipendio Netto CCNL 2026 — Nuove Aliquote IRPEF, RAL & TFR</title>
+  <meta name="description" content="Calcola gratis lo stipendio netto mensile e annuale dal lordo (RAL) o dal CCNL (Commercio, Metalmeccanici, Turismo). Aggiornato con Nuova IRPEF a 3 scaglioni, taglio cuneo fiscale, TFR e calcolo inverso per il colloquio.">
+  <meta name="keywords" content="calcolo stipendio netto, netto da ral, ccnl commercio netto, ccnl metalmeccanici netto, nuova irpef 2026, quanto chiedere al colloquio ral, calcolo tfr">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Calcolo Stipendio Netto CCNL 2026 — Nuova IRPEF & RAL">
+  <meta property="og:description" content="Calcolatore istantaneo stipendio netto da RAL o CCNL. Include calcolo inverso per negoziare la RAL al colloquio di lavoro.">
+  <meta property="og:locale" content="it_IT">
+
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js per grafico a ciambella interattivo -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Calcolo Stipendio Netto CCNL",
+      "description": "Simulatore fiscale italiano 2025/2026 per il calcolo dello stipendio netto da RAL o CCNL con nuova IRPEF a 3 scaglioni.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quali sono le nuove aliquote IRPEF 2025/2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La nuova IRPEF si articola su 3 scaglioni: 23% fino a 28.000€, 35% da 28.000€ a 50.000€, e 43% oltre i 50.000€ di reddito imponibile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come si calcola lo stipendio netto dalla RAL?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dalla Retribuzione Annua Lorda (RAL) si sottraggono i contributi previdenziali INPS (9,19%). Sull'imponibile ottenuto si calcola l'IRPEF lorda, a cui si applicano le detrazioni da lavoro dipendente. Infine si aggiungono le addizionali regionali e comunali e si divide il netto annuo per le mensilità previste dal CCNL (13 o 14)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come calcolare la RAL da chiedere al colloquio partendo dal netto desiderato?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Utilizzando il simulatore di calcolo inverso di NettoStipendio.it, inserisci il netto mensile desiderato in tasca: il sistema determina matematicamente la RAL lorda minima contrattuale da richiedere in fase di negoziazione contrattuale."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-mono-num { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Header & Navigazione -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-extrabold text-xl shadow-md">
+          €
+        </div>
+        <div>
+          <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-blue-700 to-indigo-800 bg-clip-text text-transparent">NettoStipendio.it</span>
+          <span class="hidden sm:inline-block ml-2 text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">IRPEF 2026</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 text-xs font-semibold">
+        <a href="#guida-fiscale" class="text-slate-600 hover:text-blue-600 hidden md:inline-block">Come si Calcola</a>
+        <a href="#tabelle-ccnl" class="text-slate-600 hover:text-blue-600 hidden md:inline-block">Tabelle CCNL</a>
+        <span class="text-slate-300 hidden md:inline-block">|</span>
+        <div class="px-3 py-1.5 bg-blue-50 text-blue-700 border border-blue-200 rounded-lg text-xs font-bold flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          3 Aliquote IRPEF Attive
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner Pubblicitario Superiore (AdSense Placeholder) -->
+  <div class="max-w-6xl mx-auto px-4 pt-4 w-full">
+    <div class="p-3 bg-white border border-dashed border-slate-300 rounded-xl text-center text-xs text-slate-400 flex flex-col items-center justify-center min-h-[70px]">
+      <span class="text-[9px] uppercase font-bold tracking-wider text-slate-400 mb-1">Spazio Sponsorizzato (Google AdSense)</span>
+      <div class="text-slate-600 font-semibold text-xs">Conti Correnti Senza Spese &bull; Mutui Prima Casa &bull; Fondi Pensione &bull; Carte Credito</div>
+    </div>
+  </div>
+
+  <!-- Contenitore Principale -->
+  <main class="max-w-6xl mx-auto px-4 py-8 flex-1 w-full">
+
+    <!-- Hero Title -->
+    <div class="text-center max-w-3xl mx-auto mb-8">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        Calcola lo Stipendio Netto <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">in Busta Paga</span>
+      </h1>
+      <p class="text-sm sm:text-base text-slate-600 mt-2">
+        Simulatore fiscale 2026 con nuova IRPEF a 3 aliquote, taglio del cuneo fiscale, minimi contrattuali CCNL e calcolo inverso per la negoziazione del colloquio.
+      </p>
+
+      <!-- Tab Switcher Modalità -->
+      <div class="mt-6 inline-flex p-1 bg-slate-200/80 rounded-xl shadow-inner gap-1 text-xs sm:text-sm font-bold">
+        <button id="tab-ral-to-netto" onclick="cambiaModalita('ral-to-netto')" class="px-4 sm:px-6 py-2.5 rounded-lg bg-white text-blue-700 shadow-sm transition">
+          💼 Da RAL / CCNL a Netto
+        </button>
+        <button id="tab-netto-to-ral" onclick="cambiaModalita('netto-to-ral')" class="px-4 sm:px-6 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5">
+          🎯 Da Netto Desiderato a RAL
+          <span class="text-[10px] bg-indigo-100 text-indigo-700 font-extrabold px-1.5 py-0.5 rounded">Colloquio</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Griglia a due colonne (Input a sinistra, Risultati in tempo reale a destra) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- COLONNA SINISTRA: Form di Inserimento -->
+      <div class="lg:col-span-6 bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+
+        <!-- Sezione CCNL con Menù a Tendina Completo -->
+        <div id="sezione-ccnl" class="space-y-3.5">
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label for="select-ccnl" class="block text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                <span>📋</span> Menù a Tendina CCNL
+              </label>
+              <span class="text-[10px] text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded-full" id="badge-totale-ccnl">
+                Caricamento CCNL...
+              </span>
+            </div>
+            <!-- Menù a tendina principale -->
+            <div class="relative">
+              <select id="select-ccnl" onchange="selezionaCcnl(this.value)" class="w-full p-3 bg-slate-50 border-2 border-slate-200 rounded-xl text-xs sm:text-sm font-semibold text-slate-900 focus:bg-white focus:border-blue-600 focus:outline-none transition cursor-pointer shadow-sm">
+                <option value="">-- Seleziona il tuo CCNL dall'elenco --</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Scorciatoie Rapide ai CCNL più diffusi -->
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1.5">Scelte Frequenti:</span>
+            <div class="flex flex-wrap gap-1.5" id="container-tags-ccnl">
+              <button type="button" onclick="selezionaCcnl('commercio_terziario')" class="btn-ccnl-tag px-2.5 py-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 transition">🛍️ Commercio</button>
+              <button type="button" onclick="selezionaCcnl('metalmeccanico_industria')" class="btn-ccnl-tag px-2.5 py-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 transition">⚙️ Metalmeccanico</button>
+              <button type="button" onclick="selezionaCcnl('turismo_ristorazione')" class="btn-ccnl-tag px-2.5 py-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 transition">☕ Turismo/Bar</button>
+              <button type="button" onclick="selezionaCcnl('trasporti_logistica')" class="btn-ccnl-tag px-2.5 py-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 transition">🚚 Trasporti/Logistica</button>
+              <button type="button" onclick="selezionaCcnl('telecomunicazioni_it')" class="btn-ccnl-tag px-2.5 py-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 transition">💻 IT & TLC</button>
+              <button type="button" onclick="selezionaCcnl('studi_professionali')" class="btn-ccnl-tag px-2.5 py-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 transition">⚖️ Studi Prof.</button>
+              <button type="button" onclick="selezionaCcnl('cooperative_sociali')" class="btn-ccnl-tag px-2.5 py-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 transition">🏥 Sanità/Coop</button>
+              <button type="button" onclick="selezionaCcnl('credito_banche')" class="btn-ccnl-tag px-2.5 py-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 transition">🏦 Banche</button>
+            </div>
+          </div>
+
+          <!-- Dropdown Livello CCNL (compare se selezionato) -->
+          <div id="box-livelli-ccnl" class="hidden p-3.5 bg-blue-50/70 border border-blue-200 rounded-xl space-y-2">
+            <div class="flex items-center justify-between">
+              <label class="block text-xs font-bold text-blue-900">Livello e Paga Base Minima:</label>
+              <span id="dettaglio-mensilita-ccnl" class="text-[10px] bg-blue-200/80 text-blue-800 font-extrabold px-2 py-0.5 rounded">14 mensilità</span>
+            </div>
+            <select id="select-livello-ccnl" onchange="applicaLivelloCcnl()" class="w-full p-2.5 bg-white border border-blue-300 rounded-xl text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm cursor-pointer">
+            </select>
+            <div id="descrizione-mansione-ccnl" class="text-[11px] text-blue-900 font-medium"></div>
+          </div>
+        </div>
+
+        <hr class="border-slate-100">
+
+        <!-- Campo Primario: RAL o Netto Desiderato -->
+        <div id="campo-input-principale" class="space-y-2">
+          <div class="flex justify-between items-center">
+            <label id="label-valore" class="text-sm font-bold text-slate-800">
+              Retribuzione Annua Lorda (RAL)
+            </label>
+            <span class="text-xs text-slate-500 font-medium" id="sottotitolo-ral">Lordo annuo da contratto</span>
+          </div>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 font-bold text-lg">€</div>
+            <input type="number" id="input-valore" value="26000" min="5000" max="200000" step="500" oninput="aggiornaCalcolo()" class="w-full pl-9 pr-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-xl text-xl font-extrabold text-slate-900 focus:bg-white focus:border-blue-600 focus:outline-none transition">
+          </div>
+          <!-- Slider rapido -->
+          <input type="range" id="slider-valore" min="10000" max="80000" step="500" value="26000" oninput="sincronizzaSlider(this.value)" class="w-full accent-blue-600 cursor-pointer">
+          <div class="flex justify-between text-[10px] text-slate-400 font-semibold px-1">
+            <span>10.000 €</span>
+            <span>25.000 €</span>
+            <span>40.000 €</span>
+            <span>60.000 €</span>
+            <span>80.000 €+</span>
+          </div>
+        </div>
+
+        <!-- Parametri Contrattuali (Mensilità & Regione) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Numero Mensilità</label>
+            <select id="select-mensilita" onchange="aggiornaCalcolo()" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+              <option value="13">13 Mensilità (con Tredicesima)</option>
+              <option value="14" selected>14 Mensilità (con Quattordicesima)</option>
+              <option value="12">12 Mensilità</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Regione di Residenza</label>
+            <select id="select-regione" onchange="aggiornaCalcolo()" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+              <option value="lombardia">Lombardia (1.33%)</option>
+              <option value="lazio">Lazio (2.03%)</option>
+              <option value="campania">Campania (2.03%)</option>
+              <option value="veneto">Veneto (1.23%)</option>
+              <option value="emilia_romagna">Emilia Romagna (1.53%)</option>
+              <option value="piemonte">Piemonte (1.82%)</option>
+              <option value="toscana">Toscana (1.42%)</option>
+              <option value="sicilia">Sicilia (1.23%)</option>
+              <option value="puglia">Puglia (1.43%)</option>
+              <option value="liguria">Liguria (1.53%)</option>
+              <option value="marche">Marche (1.53%)</option>
+              <option value="umbria">Umbria (1.53%)</option>
+              <option value="abruzzo">Abruzzo (1.73%)</option>
+              <option value="sardegna">Sardegna (1.23%)</option>
+              <option value="media" selected>Media Nazionale (1.50%)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Opzioni Avanzate (Buoni Pasto & Carichi di Famiglia) -->
+        <div class="border-t border-slate-100 pt-4 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-700">Buoni Pasto Giornalieri (Esentasse)</span>
+            <select id="select-buoni-pasto" onchange="aggiornaCalcolo()" class="p-1.5 bg-slate-50 border border-slate-300 rounded-lg text-xs font-medium">
+              <option value="0">Nessuno (0 €)</option>
+              <option value="5.29">Cartacei (5,29 €/gg)</option>
+              <option value="8.00" selected>Elettronici (8,00 €/gg max esente)</option>
+              <option value="10.00">10,00 €/gg</option>
+            </select>
+          </div>
+          <div class="flex items-center gap-4 text-xs text-slate-700">
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" id="check-coniuge" onchange="aggiornaCalcolo()" class="rounded text-blue-600 focus:ring-blue-500">
+              Coniuge a carico
+            </label>
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input type="number" id="input-figli" value="0" min="0" max="6" onchange="aggiornaCalcolo()" class="w-12 p-1 bg-slate-50 border border-slate-300 rounded text-center text-xs">
+              Figli a carico (>21 anni)
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- COLONNA DESTRA: Risultati Fiscari Istantanei & Grafico -->
+      <div class="lg:col-span-6 space-y-6">
+
+        <!-- Card Primaria Risultato Netto -->
+        <div class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white p-6 sm:p-7 rounded-2xl shadow-xl relative overflow-hidden border border-slate-800">
+          <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[11px] font-extrabold uppercase tracking-widest text-indigo-300 bg-indigo-900/50 px-2.5 py-1 rounded-full border border-indigo-700/50">
+              Stipendio Netto Stimato
+            </span>
+            <span class="text-xs text-slate-400" id="badge-mensilita">su 14 mensilità</span>
+          </div>
+
+          <!-- Valore Netto Mensile -->
+          <div class="flex items-baseline gap-2">
+            <span class="text-4xl sm:text-5xl font-extrabold tracking-tight font-mono-num text-emerald-400" id="valore-netto-mensile">
+              1.485 €
+            </span>
+            <span class="text-slate-400 font-semibold text-sm">/ mese</span>
+          </div>
+
+          <!-- Con Buoni Pasto inclusi -->
+          <div id="box-netto-con-buoni" class="mt-3 p-2.5 bg-white/10 rounded-xl text-xs flex items-center justify-between">
+            <span class="text-slate-300">Netto reale con Buoni Pasto (20 gg):</span>
+            <span class="font-extrabold text-white font-mono-num text-sm" id="valore-con-buoni">1.645 € / mese</span>
+          </div>
+
+          <!-- Griglia Sintetica: Netto Annuo, TFR e Costo Azienda -->
+          <div class="grid grid-cols-3 gap-2 mt-5 pt-4 border-t border-slate-800 text-center text-xs">
+            <div>
+              <div class="text-[10px] text-slate-400 font-medium">Netto Annuo</div>
+              <div class="font-bold text-slate-200 mt-0.5 font-mono-num" id="valore-netto-annuo">20.790 €</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-slate-400 font-medium">TFR Maturato/Anno</div>
+              <div class="font-bold text-amber-300 mt-0.5 font-mono-num" id="valore-tfr">1.820 €</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-slate-400 font-medium">Pressione Fiscale</div>
+              <div class="font-bold text-rose-300 mt-0.5 font-mono-num" id="valore-pressione">20.0%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Box Calcolo Inverso Risultato (visibile solo in modalità 2) -->
+        <div id="box-risultato-inverso" class="hidden p-5 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl text-xs space-y-2">
+          <span class="text-[10px] uppercase font-bold tracking-wider text-blue-700 bg-blue-100 px-2 py-0.5 rounded">Consiglio per il Colloquio</span>
+          <h3 class="text-sm font-extrabold text-slate-900" id="testo-consiglio-colloquio">
+            Per ottenere 1.800 € netti al mese devi richiedere una RAL di almeno <span class="text-blue-700 font-mono-num font-bold text-base">31.500 €</span>
+          </h3>
+          <p class="text-slate-600">
+            In sede di negoziazione, richiedi un range tra <strong>31.500 € e 33.000 €</strong> per avere margine di trattativa e coprire eventuali addizionali comunali più elevate.
+          </p>
+        </div>
+
+        <!-- Dettaglio delle Trattenute e Grafico a Ciambella -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <h3 class="font-bold text-sm text-slate-800 flex items-center justify-between">
+            <span>Ripartizione della Busta Paga</span>
+            <span class="text-xs font-normal text-slate-400">Valori su base annua</span>
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
+            <!-- Canvas Grafico -->
+            <div class="sm:col-span-5 flex justify-center">
+              <div class="w-36 h-36 relative">
+                <canvas id="chart-trattenute"></canvas>
+              </div>
+            </div>
+
+            <!-- Tabellina Dettagliata -->
+            <div class="sm:col-span-7 space-y-2 text-xs">
+              <div class="flex justify-between items-center pb-1 border-b border-slate-100">
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>Netto in Tasca</span>
+                <span class="font-bold font-mono-num text-slate-900" id="tab-netto">20.790 €</span>
+              </div>
+              <div class="flex justify-between items-center pb-1 border-b border-slate-100">
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>Contributi INPS (Dipendente)</span>
+                <span class="font-bold font-mono-num text-slate-900" id="tab-inps">2.389 €</span>
+              </div>
+              <div class="flex justify-between items-center pb-1 border-b border-slate-100">
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>IRPEF Netta Statale</span>
+                <span class="font-bold font-mono-num text-slate-900" id="tab-irpef">2.412 €</span>
+              </div>
+              <div class="flex justify-between items-center pb-1 border-b border-slate-100">
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>Addizionali Regionale e Comunale</span>
+                <span class="font-bold font-mono-num text-slate-900" id="tab-addizionali">409 €</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Box Monetizzazione 1: Accredito Stipendio & Conti Correnti (Affiliazione 30€-50€) -->
+        <div class="p-5 bg-gradient-to-r from-emerald-600 to-teal-700 text-white rounded-2xl shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <span class="text-[10px] uppercase font-extrabold tracking-wider bg-white/20 px-2 py-0.5 rounded">Offerta Stipendio</span>
+            <h4 class="font-extrabold text-sm sm:text-base mt-1">Accredita lo stipendio su Conto a Canone 0€</h4>
+            <p class="text-xs text-emerald-100 mt-0.5">Zero spese, bonifici istantanei gratis e remunerazione fino al 4% sulla liquidità.</p>
+          </div>
+          <a href="https://www.bbva.it" target="_blank" rel="noopener sponsored" class="px-5 py-2.5 bg-white text-emerald-800 hover:bg-emerald-50 font-extrabold text-xs rounded-xl transition shadow whitespace-nowrap">
+            Apri Conto a 0€ &rarr;
+          </a>
+        </div>
+
+        <!-- Box Monetizzazione 2: Cessione del Quinto / Prestito Stipendio (Affiliazione Finanziaria) -->
+        <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div>
+            <span class="font-bold text-slate-900">Hai bisogno di liquidità sul tuo stipendio?</span>
+            <p class="text-slate-600 text-[11px]">Calcola gratis la rata massima della Cessione del Quinto (max 20% del netto).</p>
+          </div>
+          <a href="https://www.facile.it/prestiti.html" target="_blank" rel="noopener sponsored" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition whitespace-nowrap text-center">
+            Confronta Prestiti &rarr;
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Sezione Informativa & Tabelle CCNL (Fondamentale per Google SEO & AdSense) -->
+    <div id="guida-fiscale" class="mt-14 pt-8 border-t border-slate-200 space-y-8">
+      
+      <div class="max-w-3xl">
+        <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">Come Funziona il Calcolo dello Stipendio Netto 2026</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+          Il passaggio dalla Retribuzione Annua Lorda (RAL) allo stipendio netto mensile è regolato dalla legislazione tributaria e previdenziale italiana. Con il recepimento a regime della <strong>Riforma dell'IRPEF a 3 scaglioni</strong> e la revisione delle detrazioni per lavoro dipendente, il calcolo della busta paga tiene conto delle seguenti voci:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+          <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">1</div>
+          <h3 class="font-bold text-sm text-slate-800">Contributi INPS (9.19%)</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            È la quota previdenziale a carico del lavoratore trattenuta direttamente dal datore di lavoro. L'imponibile fiscale su cui calcolare l'IRPEF è dato dalla RAL al netto dei contributi INPS.
+          </p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+          <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-sm">2</div>
+          <h3 class="font-bold text-sm text-slate-800">Nuove 3 Aliquote IRPEF</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Fino a 28.000 € si applica l'aliquota del <strong>23%</strong>; tra 28.000 € e 50.000 € l'aliquota sale al <strong>35%</strong>; oltre i 50.000 € si applica l'aliquota marginale del <strong>43%</strong>.
+          </p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm">3</div>
+          <h3 class="font-bold text-sm text-slate-800">Detrazioni & No-Tax Area</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            La no-tax area per i lavoratori dipendenti è fissata a 8.500 € con una detrazione massima teorica di 1.955 €, che decresce all'aumentare del reddito complessivo.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tabelle Minimi Contrattuali CCNL -->
+      <div id="tabelle-ccnl" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <h3 class="font-bold text-base text-slate-900">Tabelle Minimi Retributivi dei Principali CCNL Italiani</h3>
+        <p class="text-xs text-slate-600">
+          I minimi tabellari rappresentano la paga base inderogabile stabilita dai contratti collettivi nazionali, comprensiva di contingenza ed EDR:
+        </p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-100/80 text-slate-700 border-b border-slate-200">
+                <th class="p-3 font-bold">Contratto Collettivo (CCNL)</th>
+                <th class="p-3 font-bold">Livello Esempio</th>
+                <th class="p-3 font-bold">Minimo Mensile Lordo</th>
+                <th class="p-3 font-bold">Mensilità</th>
+                <th class="p-3 font-bold">RAL Minima Stimata</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-slate-600">
+              <tr>
+                <td class="p-3 font-semibold text-slate-900">CCNL Commercio & Terziario</td>
+                <td class="p-3">4° Livello (Addetti vendite, impiegati)</td>
+                <td class="p-3 font-mono-num font-bold">1.734,00 €</td>
+                <td class="p-3">14</td>
+                <td class="p-3 font-mono-num font-bold text-blue-700">24.276 €</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-900">CCNL Metalmeccanico Industria</td>
+                <td class="p-3">Livello C3 (Operai/Impiegati spec.)</td>
+                <td class="p-3 font-mono-num font-bold">2.010,00 €</td>
+                <td class="p-3">13</td>
+                <td class="p-3 font-mono-num font-bold text-blue-700">26.130 €</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-900">CCNL Turismo & Pubblici Esercizi</td>
+                <td class="p-3">4° Livello (Camerieri, Baristi)</td>
+                <td class="p-3 font-mono-num font-bold">1.690,00 €</td>
+                <td class="p-3">14</td>
+                <td class="p-3 font-mono-num font-bold text-blue-700">23.660 €</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-900">CCNL Telecomunicazioni & IT</td>
+                <td class="p-3">5° Livello (Software Dev, Analisti)</td>
+                <td class="p-3 font-mono-num font-bold">2.180,00 €</td>
+                <td class="p-3">13</td>
+                <td class="p-3 font-mono-num font-bold text-blue-700">28.340 €</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-900">CCNL Studi Professionali</td>
+                <td class="p-3">4° Livello (Segreteria, accoglienza)</td>
+                <td class="p-3 font-mono-num font-bold">1.670,00 €</td>
+                <td class="p-3">14</td>
+                <td class="p-3 font-mono-num font-bold text-blue-700">23.380 €</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-900">CCNL Cooperative Sociali</td>
+                <td class="p-3">Livello C1 (Operatori Socio Sanitari - OSS)</td>
+                <td class="p-3 font-mono-num font-bold">1.660,00 €</td>
+                <td class="p-3">13</td>
+                <td class="p-3 font-mono-num font-bold text-blue-700">21.580 €</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer con Pagine di Conformità Legale -->
+  <footer class="bg-white border-t border-slate-200 mt-16 py-8 text-xs text-slate-500">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <p class="font-bold text-slate-700">&copy; 2026 NettoStipendio.it &bull; Simulatore Fiscale Dipendenti</p>
+        <p class="text-[11px] text-slate-400 mt-0.5">I calcoli hanno valore puramente informativo e simulativo basato sui parametri fiscali standard.</p>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-semibold">
+        <button onclick="apriModale('privacy')" class="hover:text-blue-600 transition">Privacy Policy</button>
+        <button onclick="apriModale('cookie')" class="hover:text-blue-600 transition">Cookie Policy</button>
+        <button onclick="apriModale('termini')" class="hover:text-blue-600 transition">Termini di Servizio</button>
+        <button onclick="apriModale('contatti')" class="hover:text-blue-600 transition">Contatti</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modale Legale Standard GDPR / AdSense -->
+  <div id="modale-legale" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full max-h-[80vh] flex flex-col shadow-2xl">
+      <div class="p-5 border-b border-slate-200 flex items-center justify-between">
+        <h3 id="modale-titolo" class="font-bold text-base text-slate-900">Informativa Legale</h3>
+        <button onclick="chiudiModale()" class="text-slate-400 hover:text-slate-700 font-bold text-lg">&times;</button>
+      </div>
+      <div id="modale-corpo" class="p-5 overflow-y-auto text-xs text-slate-600 space-y-3 leading-relaxed">
+      </div>
+      <div class="p-4 border-t border-slate-200 text-right">
+        <button onclick="chiudiModale()" class="px-4 py-2 bg-slate-900 text-white font-bold text-xs rounded-xl hover:bg-slate-800 transition">
+          Ho Capito
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT LOGICO APPLICATIVO -->
+  <script src="./fiscal_engine.js"></script>
+  <script>
+    let modalitaAttiva = 'ral-to-netto'; // 'ral-to-netto' o 'netto-to-ral'
+    let ccnlData = null;
+    let chartIstanza = null;
+
+    // Carica dati CCNL e popola il menù a tendina
+    async function caricaCcnl() {
+      try {
+        const res = await fetch('./ccnl_retribuzioni.json');
+        ccnlData = await res.json();
+        popolaMenuTendinaCcnl();
+      } catch (e) {
+        console.warn("Dati CCNL caricati in modalità fallback:", e);
+      }
+    }
+
+    function popolaMenuTendinaCcnl() {
+      if (!ccnlData || !ccnlData.contratti) return;
+      const selectCcnl = document.getElementById('select-ccnl');
+      selectCcnl.innerHTML = '<option value="">-- Seleziona il tuo CCNL dal menù a tendina --</option>';
+
+      // Raggruppa per categoria/gruppo
+      const gruppi = {};
+      ccnlData.contratti.forEach(c => {
+        const g = c.gruppo || "Altri Contratti";
+        if (!gruppi[g]) gruppi[g] = [];
+        gruppi[g].push(c);
+      });
+
+      for (const [nomeGruppo, contratti] of Object.entries(gruppi)) {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = `📁 ${nomeGruppo}`;
+        contratti.forEach(c => {
+          const opt = document.createElement('option');
+          opt.value = c.id;
+          opt.innerText = `${c.nome} (${c.mensilita} mensilità)`;
+          optgroup.appendChild(opt);
+        });
+        selectCcnl.appendChild(optgroup);
+      }
+
+      const badge = document.getElementById('badge-totale-ccnl');
+      if (badge) badge.innerText = `${ccnlData.contratti.length} CCNL Disponibili`;
+    }
+
+    function cambiaModalita(nuovaModalita) {
+      modalitaAttiva = nuovaModalita;
+      const tabRal = document.getElementById('tab-ral-to-netto');
+      const tabNetto = document.getElementById('tab-netto-to-ral');
+      const labelValore = document.getElementById('label-valore');
+      const sottotitolo = document.getElementById('sottotitolo-ral');
+      const boxInverso = document.getElementById('box-risultato-inverso');
+      const sezioneCcnl = document.getElementById('sezione-ccnl');
+      const inputValore = document.getElementById('input-valore');
+      const sliderValore = document.getElementById('slider-valore');
+
+      if (nuovaModalita === 'ral-to-netto') {
+        tabRal.className = "px-4 sm:px-6 py-2.5 rounded-lg bg-white text-blue-700 shadow-sm transition";
+        tabNetto.className = "px-4 sm:px-6 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5";
+        labelValore.innerText = "Retribuzione Annua Lorda (RAL)";
+        sottotitolo.innerText = "Lordo annuo da contratto";
+        boxInverso.classList.add('hidden');
+        sezioneCcnl.classList.remove('opacity-40', 'pointer-events-none');
+        sliderValore.min = 10000;
+        sliderValore.max = 80000;
+        sliderValore.step = 500;
+        inputValore.value = 26000;
+        sliderValore.value = 26000;
+      } else {
+        tabNetto.className = "px-4 sm:px-6 py-2.5 rounded-lg bg-white text-blue-700 shadow-sm transition flex items-center gap-1.5";
+        tabRal.className = "px-4 sm:px-6 py-2.5 rounded-lg text-slate-600 hover:text-slate-900 transition";
+        labelValore.innerText = "Stipendio Netto Desiderato al Mese";
+        sottotitolo.innerText = "Quanto vorresti percepire in tasca";
+        boxInverso.classList.remove('hidden');
+        sezioneCcnl.classList.add('opacity-40', 'pointer-events-none');
+        sliderValore.min = 800;
+        sliderValore.max = 5000;
+        sliderValore.step = 50;
+        inputValore.value = 1800;
+        sliderValore.value = 1800;
+      }
+      aggiornaCalcolo();
+    }
+
+    function sincronizzaSlider(val) {
+      document.getElementById('input-valore').value = val;
+      aggiornaCalcolo();
+    }
+
+    function selezionaCcnl(idCcnl) {
+      if (!idCcnl || !ccnlData || !ccnlData.contratti) {
+        document.getElementById('box-livelli-ccnl').classList.add('hidden');
+        return;
+      }
+      const c = ccnlData.contratti.find(x => x.id === idCcnl);
+      if (!c) return;
+
+      // Sincronizza il valore nel menù a tendina
+      const selectMenu = document.getElementById('select-ccnl');
+      if (selectMenu) selectMenu.value = idCcnl;
+
+      // Aggiorna mensilità nel form
+      document.getElementById('select-mensilita').value = c.mensilita;
+      const badgeMens = document.getElementById('dettaglio-mensilita-ccnl');
+      if (badgeMens) badgeMens.innerText = `${c.mensilita} mensilità previste`;
+
+      // Popola select livelli
+      const selectLivello = document.getElementById('select-livello-ccnl');
+      selectLivello.innerHTML = '';
+      c.livelli.forEach((liv, idx) => {
+        const opt = document.createElement('option');
+        opt.value = liv.lordo_mensile * c.mensilita;
+        opt.dataset.mansioni = liv.mansioni;
+        opt.dataset.lordoMese = liv.lordo_mensile;
+        opt.innerText = `${liv.nome} — ${liv.lordo_mensile.toLocaleString('it-IT')} €/m`;
+        selectLivello.appendChild(opt);
+      });
+
+      // Seleziona un livello intermedio (es. 4° livello)
+      const indiceDefault = Math.min(3, c.livelli.length - 1);
+      selectLivello.selectedIndex = indiceDefault;
+
+      document.getElementById('box-livelli-ccnl').classList.remove('hidden');
+
+      // Evidenzia pulsante tag se presente
+      document.querySelectorAll('.btn-ccnl-tag').forEach(btn => {
+        btn.classList.remove('border-blue-600', 'bg-blue-50', 'text-blue-700');
+      });
+      document.querySelectorAll('.btn-ccnl-tag').forEach(btn => {
+        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(idCcnl)) {
+          btn.classList.add('border-blue-600', 'bg-blue-50', 'text-blue-700');
+        }
+      });
+
+      applicaLivelloCcnl();
+    }
+
+    function applicaLivelloCcnl() {
+      const selectLivello = document.getElementById('select-livello-ccnl');
+      const selectedOption = selectLivello.options[selectLivello.selectedIndex];
+      const ralCalcolata = Math.round(parseFloat(selectLivello.value) || 24000);
+      
+      const mansioniBox = document.getElementById('descrizione-mansione-ccnl');
+      if (selectedOption && selectedOption.dataset.mansioni) {
+        mansioniBox.innerHTML = `💼 <strong>Mansioni tipiche:</strong> ${selectedOption.dataset.mansioni} &bull; Paga base: <strong>${parseFloat(selectedOption.dataset.lordoMese).toLocaleString('it-IT')} €/m</strong> lordi`;
+      }
+
+      document.getElementById('input-valore').value = ralCalcolata;
+      document.getElementById('slider-valore').value = Math.min(80000, ralCalcolata);
+      aggiornaCalcolo();
+    }
+
+    function aggiornaCalcolo() {
+      const mensilita = parseInt(document.getElementById('select-mensilita').value) || 14;
+      const regione = document.getElementById('select-regione').value || 'media';
+      const buoniPasto = parseFloat(document.getElementById('select-buoni-pasto').value) || 0;
+      const coniugeCarico = document.getElementById('check-coniuge').checked;
+      const figliCarico = parseInt(document.getElementById('input-figli').value) || 0;
+      const inputVal = parseFloat(document.getElementById('input-valore').value) || 0;
+
+      let ralEffettiva = inputVal;
+
+      if (modalitaAttiva === 'netto-to-ral') {
+        // Calcolo inverso: da netto desiderato ricava la RAL
+        ralEffettiva = FiscalEngine.calcolaRalDaNettoDesiderato(inputVal, mensilita, regione);
+        const consiglio = document.getElementById('testo-consiglio-colloquio');
+        consiglio.innerHTML = `Per ottenere <strong>${inputVal.toLocaleString('it-IT')} € netti</strong> al mese devi richiedere una RAL di almeno <span class="text-blue-700 font-mono-num font-extrabold text-base">${ralEffettiva.toLocaleString('it-IT')} €</span> (su ${mensilita} mensilità).`;
+      }
+
+      const res = FiscalEngine.calcolaDaRal({
+        ral: ralEffettiva,
+        mensilita: mensilita,
+        regione: regione,
+        buoniPastoUnitario: buoniPasto,
+        giorniBuoniPasto: 20,
+        coniugeCarico: coniugeCarico,
+        figliCarico: figliCarico
+      });
+
+      // Aggiorna valori card
+      document.getElementById('valore-netto-mensile').innerText = `${res.nettoMensileBase.toLocaleString('it-IT', { minimumFractionDigits: 0, maximumFractionDigits: 0 })} €`;
+      document.getElementById('badge-mensilita').innerText = `su ${mensilita} mensilità`;
+      document.getElementById('valore-netto-annuo').innerText = `${res.nettoAnnuo.toLocaleString('it-IT')} €`;
+      document.getElementById('valore-tfr').innerText = `${res.tfrAnnuo.toLocaleString('it-IT')} €`;
+      document.getElementById('valore-pressione').innerText = `${res.pressioneFiscalePercentuale}%`;
+
+      // Buoni pasto
+      const boxBuoni = document.getElementById('box-netto-con-buoni');
+      if (buoniPasto > 0) {
+        boxBuoni.classList.remove('hidden');
+        document.getElementById('valore-con-buoni').innerText = `${res.nettoMensileTotale.toLocaleString('it-IT', { minimumFractionDigits: 0, maximumFractionDigits: 0 })} € / mese`;
+      } else {
+        boxBuoni.classList.add('hidden');
+      }
+
+      // Tabella dettagli
+      document.getElementById('tab-netto').innerText = `${res.nettoAnnuo.toLocaleString('it-IT')} €`;
+      document.getElementById('tab-inps').innerText = `${res.inpsAnnuo.toLocaleString('it-IT')} €`;
+      document.getElementById('tab-irpef').innerText = `${res.irpefNetta.toLocaleString('it-IT')} €`;
+      document.getElementById('tab-addizionali').innerText = `${(res.addizionaleRegionale + res.addizionaleComunale).toLocaleString('it-IT')} €`;
+
+      // Aggiorna Grafico
+      aggiornaGrafico(res);
+    }
+
+    function aggiornaGrafico(res) {
+      const dati = [
+        res.nettoAnnuo,
+        res.inpsAnnuo,
+        res.irpefNetta,
+        (res.addizionaleRegionale + res.addizionaleComunale)
+      ];
+
+      if (!chartIstanza) {
+        const ctx = document.getElementById('chart-trattenute').getContext('2d');
+        chartIstanza = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Netto', 'INPS', 'IRPEF', 'Addizionali'],
+            datasets: [{
+              data: dati,
+              backgroundColor: ['#10b981', '#3b82f6', '#f59e0b', '#a855f7'],
+              borderWidth: 2,
+              borderColor: '#ffffff'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function(item) {
+                    return ` ${item.label}: ${item.raw.toLocaleString('it-IT')} €`;
+                  }
+                }
+              }
+            },
+            cutout: '72%'
+          }
+        });
+      } else {
+        chartIstanza.data.datasets[0].data = dati;
+        chartIstanza.update();
+      }
+    }
+
+    // Modali Legali
+    function apriModale(tipo) {
+      const mod = document.getElementById('modale-legale');
+      const tit = document.getElementById('modale-titolo');
+      const corp = document.getElementById('modale-corpo');
+
+      if (tipo === 'privacy') {
+        tit.innerText = "Informativa sulla Privacy (GDPR)";
+        corp.innerHTML = `
+          <p><strong>1. Titolare del trattamento:</strong> Il sito opera come strumento di calcolo simulativo. I dati inseriti dall'utente (RAL, CCNL, residenza) vengono elaborati interamente in memoria volatile nel browser dell'utente (lato client) e non vengono salvati su server remoti.</p>
+          <p><strong>2. Cookie pubblicitari di terze parti (Google AdSense):</strong> Questo sito ospita annunci pubblicitari forniti da Google. Google utilizza cookie per pubblicare annunci pertinenti basati sulle precedenti visite degli utenti. Gli utenti possono gestire le proprie preferenze tramite le impostazioni annunci di Google.</p>
+        `;
+      } else if (tipo === 'cookie') {
+        tit.innerText = "Cookie Policy";
+        corp.innerHTML = `
+          <p>Questo sito utilizza esclusivamente cookie tecnici necessari al corretto funzionamento della sessione e cookie analitici anonimizzati aggregati (Vercel Web Analytics) senza profilazione personale diretta dell'utente.</p>
+        `;
+      } else if (tipo === 'termini') {
+        tit.innerText = "Termini di Servizio & Disclaimer";
+        corp.innerHTML = `
+          <p>I calcoli forniti da NettoStipendio.it hanno natura puramente indicativa e simulativa, basati sulle aliquote fiscali e contributive vigenti per l'anno 2025/2026. Non costituiscono consulenza del lavoro o parere contabile vincolante. Per la corretta elaborazione della busta paga definitiva fare sempre riferimento a un Consulente del Lavoro abilitato.</p>
+        `;
+      } else {
+        tit.innerText = "Contatti";
+        corp.innerHTML = `
+          <p>Per segnalazioni, richieste di partnership o correzioni sulle tabelle CCNL scrivi a: <strong>info@nettostipendio.it</strong></p>
+        `;
+      }
+      mod.classList.remove('hidden');
+    }
+
+    function chiudiModale() {
+      document.getElementById('modale-legale').classList.add('hidden');
+    }
+
+    // Cookie Banner GDPR
+    function accettaCookie() {
+      localStorage.setItem('cookie_consent_stipendio', 'accepted');
+      const banner = document.getElementById('cookie-consent-banner');
+      if (banner) banner.classList.add('hidden');
+    }
+
+    function controllaCookie() {
+      if (!localStorage.getItem('cookie_consent_stipendio')) {
+        const banner = document.getElementById('cookie-consent-banner');
+        if (banner) banner.classList.remove('hidden');
+      }
+    }
+
+    // Inizializzazione
+    window.addEventListener('DOMContentLoaded', async () => {
+      controllaCookie();
+      await caricaCcnl();
+      aggiornaCalcolo();
+    });
+  </script>
+
+  <!-- Banner Cookie GDPR Obbligatorio AdSense -->
+  <div id="cookie-consent-banner" class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md bg-slate-900/95 text-white p-4 rounded-2xl shadow-2xl z-50 border border-slate-700 text-xs backdrop-blur hidden">
+    <div class="flex items-start gap-3">
+      <span class="text-xl">🍪</span>
+      <div class="space-y-1.5 flex-1">
+        <h4 class="font-bold text-slate-100 text-xs">Informativa Cookie & Privacy</h4>
+        <p class="text-[11px] text-slate-300 leading-relaxed">
+          Questo sito utilizza cookie tecnici e analitici anonimi per migliorare la tua esperienza e annunci pubblicitari conformi al GDPR.
+        </p>
+        <div class="flex items-center gap-2 pt-1">
+          <button onclick="accettaCookie()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 font-bold rounded-lg text-white transition text-xs">
+            Accetta Tutti
+          </button>
+          <button onclick="apriModale('cookie')" class="px-2.5 py-1.5 text-slate-400 hover:text-white transition text-xs underline">
+            Personalizza
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

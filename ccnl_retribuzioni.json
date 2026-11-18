@@ -1,0 +1,278 @@
+{
+  "aggiornato_al": "2026-01-01",
+  "note": "Minimi tabellari comprensivi di contingenza ed EDR (Elemento Distinto della Retribuzione) secondo i rinnovi contrattuali vigenti",
+  "contratti": [
+    {
+      "id": "commercio_terziario",
+      "nome": "CCNL Commercio, Terziario e Servizi (Confcommercio)",
+      "gruppo": "Commercio & Servizi",
+      "mensilita": 14,
+      "settore": "Commercio al dettaglio, GDO, Servizi alle Imprese, Consulenza",
+      "livelli": [
+        { "sigla": "1", "nome": "1° Livello - Quadri direttivi, Capi ufficio", "lordo_mensile": 2552.00, "mansioni": "Responsabili di funzione, quadri intermedi" },
+        { "sigla": "2", "nome": "2° Livello - Responsabili di reparto, Capi filiale", "lordo_mensile": 2284.00, "mansioni": "Capi negozio, ispettori, tecnici laureati" },
+        { "sigla": "3", "nome": "3° Livello - Impiegati di concetto, Tecnici specializzati", "lordo_mensile": 1963.00, "mansioni": "Contabili, programmatori, buyer, specialisti marketing" },
+        { "sigla": "4", "nome": "4° Livello - Impiegati d'ordine, Addetti vendite (IL PIÙ DIFFUSO)", "lordo_mensile": 1734.00, "mansioni": "Commessi, cassieri senior, addetti customer care, impiegati back-office" },
+        { "sigla": "5", "nome": "5° Livello - Addetti vendite junior, Ausiliari", "lordo_mensile": 1625.00, "mansioni": "Addetti rifornimento scaffali, magazzinieri, cassieri" },
+        { "sigla": "6", "nome": "6° Livello - Operai comuni, Custodi", "lordo_mensile": 1512.00, "mansioni": "Addetti alle pulizie, guardiani, fattorini" },
+        { "sigla": "7", "nome": "7° Livello - Lavoratori prima assunzione", "lordo_mensile": 1403.00, "mansioni": "Manovali, primi inserimenti" }
+      ]
+    },
+    {
+      "id": "commercio_distribuzione",
+      "nome": "CCNL Distribuzione Moderna Organizzata (Federdistribuzione)",
+      "gruppo": "Commercio & Servizi",
+      "mensilita": 14,
+      "settore": "Supermercati, Ipermercati, Catene retail",
+      "livelli": [
+        { "sigla": "1", "nome": "1° Livello - Direttori punto vendita", "lordo_mensile": 2540.00, "mansioni": "Store manager ipermercati" },
+        { "sigla": "2", "nome": "2° Livello - Capi settore GDO", "lordo_mensile": 2270.00, "mansioni": "Coordinatori di corsia/reparto" },
+        { "sigla": "3", "nome": "3° Livello - Capi reparto specialisti", "lordo_mensile": 1950.00, "mansioni": "Capi reparto freschi/macelleria" },
+        { "sigla": "4", "nome": "4° Livello - Addetti vendita e cassa GDO", "lordo_mensile": 1725.00, "mansioni": "Cassieri, gastronomi, commessi reparto" },
+        { "sigla": "5", "nome": "5° Livello - Addetti ausiliari alla vendita", "lordo_mensile": 1610.00, "mansioni": "Carico/scarico, scaffalisti" }
+      ]
+    },
+    {
+      "id": "turismo_ristorazione",
+      "nome": "CCNL Turismo, Pubblici Esercizi e Alberghi (FIPE / Federalberghi)",
+      "gruppo": "Commercio & Servizi",
+      "mensilita": 14,
+      "settore": "Bar, Ristoranti, Hotel, Pasticcerie, Catering",
+      "livelli": [
+        { "sigla": "1", "nome": "1° Livello - Executive Chef, Direttori albergo", "lordo_mensile": 2420.00, "mansioni": "Direzione sala/cucina hotel 4-5 stelle" },
+        { "sigla": "2", "nome": "2° Livello - Sous Chef, Maître, Capi ricevimento", "lordo_mensile": 2180.00, "mansioni": "Responsabili turno ristorante, chef de rang" },
+        { "sigla": "3", "nome": "3° Livello - Cuochi capi partita, Barman esperti", "lordo_mensile": 1880.00, "mansioni": "Cuochi autonomi, barman cocktail, receptionist senior" },
+        { "sigla": "4", "nome": "4° Livello - Camerieri di sala, Baristi, Cuochi d'ordine", "lordo_mensile": 1690.00, "mansioni": "Camerieri, baristi bar/tavola calda, pizzaioli" },
+        { "sigla": "5", "nome": "5° Livello - Aiuto cuochi, Commis di sala", "lordo_mensile": 1580.00, "mansioni": "Aiuto cucina, commis bar/sala, aiuto banconieri" },
+        { "sigla": "6s", "nome": "6° Livello Super - Addetti pulizie camere, Lavapiatti", "lordo_mensile": 1490.00, "mansioni": "Plongeurs, personale ai piani hotel" },
+        { "sigla": "7", "nome": "7° Livello - Personale generico", "lordo_mensile": 1390.00, "mansioni": "Fattorini, custodi generici" }
+      ]
+    },
+    {
+      "id": "studi_professionali",
+      "nome": "CCNL Studi Professionali (Confprofessioni)",
+      "gruppo": "Commercio & Servizi",
+      "mensilita": 14,
+      "settore": "Studi Commercialisti, Legali, Notarili, Ingegneria, Odontoiatrici",
+      "livelli": [
+        { "sigla": "1", "nome": "1° Livello - Capi ufficio studi, Responsabili tecnici", "lordo_mensile": 2360.00, "mansioni": "Commercialisti/Avvocati dipendenti, capi settore contabile" },
+        { "sigla": "2", "nome": "2° Livello - Impiegati direttivi di concetto", "lordo_mensile": 2080.00, "mansioni": "Responsabili bilancio, redattori atti complessi" },
+        { "sigla": "3", "nome": "3° Livello - Impiegati di concetto / ASO esperte", "lordo_mensile": 1850.00, "mansioni": "Contabili esperti, Assistenti Studio Odontoiatrico (ASO)" },
+        { "sigla": "4", "nome": "4° Livello - Segretarie di studio, Addetti accoglienza", "lordo_mensile": 1670.00, "mansioni": "Centralino, gestione scadenze, archiviazione pratiche" },
+        { "sigla": "5", "nome": "5° Livello - Addetti generici, Ausiliari", "lordo_mensile": 1520.00, "mansioni": "Servizi generali, archivio cartaceo" }
+      ]
+    },
+    {
+      "id": "farmacie_private",
+      "nome": "CCNL Farmacie Private (Federfarma)",
+      "gruppo": "Commercio & Servizi",
+      "mensilita": 14,
+      "settore": "Farmacie urbane e rurali",
+      "livelli": [
+        { "sigla": "1Q", "nome": "1° Livello Super - Farmacista Direttore responsabile", "lordo_mensile": 2490.00, "mansioni": "Direzione tecnica farmacia" },
+        { "sigla": "1", "nome": "1° Livello - Farmacista Collaboratore (con oltre 2 anni)", "lordo_mensile": 2255.00, "mansioni": "Dispensazione farmaci, consulenza galenica" },
+        { "sigla": "2", "nome": "2° Livello - Farmacista Collaboratore (primi 2 anni)", "lordo_mensile": 2090.00, "mansioni": "Farmacista neo-assunto" },
+        { "sigla": "3", "nome": "3° Livello - Addetto vendita dermocosmesi, Magazziniere", "lordo_mensile": 1720.00, "mansioni": "Consulenza cosmetica, gestione ordini" },
+        { "sigla": "4", "nome": "4° Livello - Ausiliario di farmacia", "lordo_mensile": 1560.00, "mansioni": "Pulizie, riordino scaffali" }
+      ]
+    },
+    {
+      "id": "vigilanza_privata",
+      "nome": "CCNL Vigilanza Privata e Servizi Fiduciari",
+      "gruppo": "Commercio & Servizi",
+      "mensilita": 14,
+      "settore": "Guardie Giurate (GPG), Portierato, Doorman, Monitoraggio allarmi",
+      "livelli": [
+        { "sigla": "1", "nome": "1° Livello - Capi servizio, Ispettori di zona", "lordo_mensile": 1940.00, "mansioni": "Coordinamento pattuglie e centrale operativa" },
+        { "sigla": "2", "nome": "2° Livello - Operatori centrali operative complesse", "lordo_mensile": 1780.00, "mansioni": "Centrale radio, televigilanza" },
+        { "sigla": "4", "nome": "4° Livello - Guardia Particolare Giurata (GPG armata)", "lordo_mensile": 1580.00, "mansioni": "Pattugliamento, scorta valori, piantonamento fisso" },
+        { "sigla": "D", "nome": "Livello D Servizi Fiduciari - Portierato / Controllo accessi", "lordo_mensile": 1390.00, "mansioni": "Accoglienza non armata, doorman, custodia" }
+      ]
+    },
+    {
+      "id": "pulizie_multiservizi",
+      "nome": "CCNL Imprese di Pulizia e Multiservizi",
+      "gruppo": "Commercio & Servizi",
+      "mensilita": 14,
+      "settore": "Facility management, Sanificazione, Pulizie uffici e ospedali",
+      "livelli": [
+        { "sigla": "7", "nome": "7° Livello - Coordinatori tecnici di commessa", "lordo_mensile": 2080.00, "mansioni": "Supervisione appalti e squadre" },
+        { "sigla": "5", "nome": "5° Livello - Capi squadra specializzati", "lordo_mensile": 1710.00, "mansioni": "Gestione turni e macchinari industriali" },
+        { "sigla": "3", "nome": "3° Livello - Operai specializzati (macchine lavapavimenti)", "lordo_mensile": 1510.00, "mansioni": "Trattamento superfici speciali, lavaggio vetri alta quota" },
+        { "sigla": "2", "nome": "2° Livello - Operai qualificati pulizie ordinarie", "lordo_mensile": 1420.00, "mansioni": "Pulizia uffici, locali commerciali, sanificazione base" }
+      ]
+    },
+    {
+      "id": "metalmeccanico_industria",
+      "nome": "CCNL Metalmeccanico Industria (Federmeccanica)",
+      "gruppo": "Industria & Manifattura",
+      "mensilita": 13,
+      "settore": "Industria meccanica, automotive, elettronica, automazione",
+      "livelli": [
+        { "sigla": "A1", "nome": "Livello A1 - Capi progetto, Ingegneri senior", "lordo_mensile": 2780.00, "mansioni": "Project manager, ingegneri di processo, responsabili R&D" },
+        { "sigla": "B3", "nome": "Livello B3 - Quadri specialisti, Coordinatori", "lordo_mensile": 2520.00, "mansioni": "Capi officina, ingegneri, sistemisti" },
+        { "sigla": "B2", "nome": "Livello B2 - Tecnici specialisti senior", "lordo_mensile": 2280.00, "mansioni": "Progettisti CAD, programmatori PLC, collaudatori senior" },
+        { "sigla": "B1", "nome": "Livello B1 - Tecnici intermedi", "lordo_mensile": 2130.00, "mansioni": "Tecnici di manutenzione, periti meccanici/elettronici" },
+        { "sigla": "C3", "nome": "Livello C3 - Operai/Impiegati specializzati", "lordo_mensile": 2010.00, "mansioni": "Tornitori CNC, montatori esperti, impiegati logistica" },
+        { "sigla": "C2", "nome": "Livello C2 - Operai specializzati di linea", "lordo_mensile": 1900.00, "mansioni": "Saldatori qualificati, addetti macchine utensili" },
+        { "sigla": "C1", "nome": "Livello C1 - Operai qualificati", "lordo_mensile": 1810.00, "mansioni": "Operatori di linea, addetti assemblaggio" },
+        { "sigla": "D2", "nome": "Livello D2 - Operai comuni esperti", "lordo_mensile": 1720.00, "mansioni": "Movimentazione carichi, addetti confezionamento" },
+        { "sigla": "D1", "nome": "Livello D1 - Inserimento operai comuni", "lordo_mensile": 1610.00, "mansioni": "Operai prima assunzione" }
+      ]
+    },
+    {
+      "id": "metalmeccanico_artigianato",
+      "nome": "CCNL Metalmeccanico Artigianato",
+      "gruppo": "Industria & Manifattura",
+      "mensilita": 13,
+      "settore": "Officine meccaniche, Fabbri, Installatori impianti, Riparatori auto",
+      "livelli": [
+        { "sigla": "1", "nome": "1° Livello - Capi bottega / Meccanici responsabili", "lordo_mensile": 2120.00, "mansioni": "Gestione autonoma commessa e officina" },
+        { "sigla": "2", "nome": "2° Livello - Operai specializzati provetti / Elettrauti", "lordo_mensile": 1950.00, "mansioni": "Diagnosi elettronica, rettifica motori, saldatura TIG" },
+        { "sigla": "3", "nome": "3° Livello - Operai specializzati", "lordo_mensile": 1820.00, "mansioni": "Installazione climatizzatori, tagliandi, carrozzeria" },
+        { "sigla": "4", "nome": "4° Livello - Operai qualificati", "lordo_mensile": 1710.00, "mansioni": "Montaggio meccanico, cambio gomme" },
+        { "sigla": "5", "nome": "5° Livello - Manovali / Aiutanti di officina", "lordo_mensile": 1580.00, "mansioni": "Preparazione pezzi, pulizia attrezzi" }
+      ]
+    },
+    {
+      "id": "chimico_farmaceutico",
+      "nome": "CCNL Chimico e Farmaceutico (Federchimica)",
+      "gruppo": "Industria & Manifattura",
+      "mensilita": 14,
+      "settore": "Laboratori farmaceutici, Cosmetica, Chimica industriale, Plastica",
+      "livelli": [
+        { "sigla": "A1", "nome": "Livello A1 - Quadri direttivi di laboratorio", "lordo_mensile": 2890.00, "mansioni": "Responsabili Quality Assurance e R&D chimico" },
+        { "sigla": "B1", "nome": "Livello B1 - Ricercatori chimici, Periti di processo", "lordo_mensile": 2480.00, "mansioni": "Formulatori, analisti cromatografia" },
+        { "sigla": "C1", "nome": "Livello C1 - Tecnici di controllo qualità", "lordo_mensile": 2190.00, "mansioni": "Campionamento lotti, prove di laboratorio" },
+        { "sigla": "D1", "nome": "Livello D1 - Conduttori impianti chimici (Linee Pharma)", "lordo_mensile": 1980.00, "mansioni": "Conduzione reattori e linee sterili di confezionamento" },
+        { "sigla": "E1", "nome": "Livello E1 - Operatori di produzione chimica", "lordo_mensile": 1790.00, "mansioni": "Movimentazione reagenti, imbottigliamento" }
+      ]
+    },
+    {
+      "id": "alimentari_industria",
+      "nome": "CCNL Industria Alimentare (Federalimentare)",
+      "gruppo": "Industria & Manifattura",
+      "mensilita": 14,
+      "settore": "Pastifici, Caseifici, Salumifici, Dolciario, Bevande",
+      "livelli": [
+        { "sigla": "1", "nome": "1° Livello - Responsabili produzione e qualità alimentare", "lordo_mensile": 2520.00, "mansioni": "Tecnologi alimentari, responsabili HACCP" },
+        { "sigla": "2", "nome": "2° Livello - Capi turno linee alimentari", "lordo_mensile": 2210.00, "mansioni": "Coordinamento forni, impasti e pastorizzazione" },
+        { "sigla": "3", "nome": "3° Livello - Operatori specializzati impasti/stagionatura", "lordo_mensile": 1940.00, "mansioni": "Casari esperti, maestri pastai, addetti taglio carni" },
+        { "sigla": "4", "nome": "4° Livello - Operatori macchine confezionamento alimentare", "lordo_mensile": 1760.00, "mansioni": "Confezionamento sottovuoto, etichettatura" },
+        { "sigla": "5", "nome": "5° Livello - Operai comuni di linea alimentare", "lordo_mensile": 1620.00, "mansioni": "Imballaggio e pallettizzazione" }
+      ]
+    },
+    {
+      "id": "tessile_abbigliamento",
+      "nome": "CCNL Tessile, Abbigliamento e Moda (SMI)",
+      "gruppo": "Industria & Manifattura",
+      "mensilita": 13,
+      "settore": "Filature, Tessiture, Confezioni moda, Pelletteria, Calzaturiero",
+      "livelli": [
+        { "sigla": "7", "nome": "7° Livello - Modellisti esperti, Responsabili collezioni", "lordo_mensile": 2340.00, "mansioni": "Sviluppo prototipi moda e cartamodelli CAD" },
+        { "sigla": "5", "nome": "5° Livello - Tagliatori esperti, Campionisti", "lordo_mensile": 1910.00, "mansioni": "Taglio tessuti laser e manuale, prototipia" },
+        { "sigla": "4", "nome": "4° Livello - Cucitrici provette, Sarti di linea", "lordo_mensile": 1720.00, "mansioni": "Confezionamento capi spalla, macchine lineari" },
+        { "sigla": "3", "nome": "3° Livello - Operatori stiro e finissaggio", "lordo_mensile": 1610.00, "mansioni": "Stiro industriale, controllo qualità filati" }
+      ]
+    },
+    {
+      "id": "trasporti_logistica",
+      "nome": "CCNL Logistica, Trasporto Merci e Spedizioni",
+      "gruppo": "Logistica & Edilizia",
+      "mensilita": 14,
+      "settore": "Autotrasporto merci, Corrieri espressi, Magazzini logistici, Interporti",
+      "livelli": [
+        { "sigla": "1", "nome": "1° Livello - Responsabili hub logistico / Spedizionieri doganali", "lordo_mensile": 2410.00, "mansioni": "Pianificazione flotte, pratiche doganali" },
+        { "sigla": "2", "nome": "2° Livello - Disponenti traffico / Capi magazzino", "lordo_mensile": 2130.00, "mansioni": "Assegnazione viaggi e gestione WMS" },
+        { "sigla": "3S", "nome": "Livello 3 Super - Autisti patente E (Bisarche, Bilici, Cisterne ADR)", "lordo_mensile": 1920.00, "mansioni": "Trasporti internazionali, carichi eccezionali" },
+        { "sigla": "3", "nome": "3° Livello - Autisti corrieri (Patente C/CQC), Magazzinieri WMS", "lordo_mensile": 1810.00, "mansioni": "Distribuzione regionale merci pesanti" },
+        { "sigla": "4", "nome": "4° Livello - Autisti furgoni consegne (Patente B) / Carrellisti", "lordo_mensile": 1680.00, "mansioni": "Driver ultimo miglio (Amazon, DHL, GLS), mulettisti con patentino" },
+        { "sigla": "5", "nome": "5° Livello - Movimentatori merci, Facchini di magazzino", "lordo_mensile": 1550.00, "mansioni": "Picking manuale, scarico container" }
+      ]
+    },
+    {
+      "id": "edilizia_industria",
+      "nome": "CCNL Edilizia Industria (ANCE)",
+      "gruppo": "Logistica & Edilizia",
+      "mensilita": 13,
+      "settore": "Cantieri edili, Grandi opere, Costruzioni civili e stradali",
+      "livelli": [
+        { "sigla": "7", "nome": "7° Livello - Direttori di cantiere, Ingegneri strutturisti", "lordo_mensile": 2680.00, "mansioni": "Gestione SAL, contabilità cantiere" },
+        { "sigla": "4", "nome": "4° Livello - Capi squadra, Assistenti di cantiere", "lordo_mensile": 2040.00, "mansioni": "Coordinamento maestranze e sicurezza" },
+        { "sigla": "3", "nome": "3° Livello - Muratori specializzati, Gruisti, Escavatoristi", "lordo_mensile": 1860.00, "mansioni": "Manovratori macchine movimento terra, ferraioli esperti" },
+        { "sigla": "2", "nome": "2° Livello - Muratori qualificati, Piastrellisti", "lordo_mensile": 1720.00, "mansioni": "Posa pavimenti, intonacatura, tramezzature" },
+        { "sigla": "1", "nome": "1° Livello - Manovali edili comuni", "lordo_mensile": 1580.00, "mansioni": "Disarmo, preparazione malte, pulizia cantiere" }
+      ]
+    },
+    {
+      "id": "cooperative_sociali",
+      "nome": "CCNL Cooperative Sociali",
+      "gruppo": "Sanità & Sociale",
+      "mensilita": 13,
+      "settore": "Assistenza anziani/disabili, RSA, Cooperative di servizi, Asili nido",
+      "livelli": [
+        { "sigla": "F", "nome": "Livello F - Dirigenti, Responsabili di Struttura/Area", "lordo_mensile": 2480.00, "mansioni": "Direttori RSA, coordinatori d'area sociale" },
+        { "sigla": "E2", "nome": "Livello E2 - Medici, Psicologi coordinatori", "lordo_mensile": 2240.00, "mansioni": "Specialisti sanitari, coordinatori pedagogici" },
+        { "sigla": "D2", "nome": "Livello D2 - Infermieri professionali, Fisioterapisti", "lordo_mensile": 1940.00, "mansioni": "Infermieri di reparto, terapisti occupazionali" },
+        { "sigla": "D1", "nome": "Livello D1 - Educatori professionali con laurea", "lordo_mensile": 1810.00, "mansioni": "Educatori di comunità, assistenti sociali" },
+        { "sigla": "C1", "nome": "Livello C1 - Operatori Socio Sanitari (OSS) qualificati", "lordo_mensile": 1660.00, "mansioni": "OSS in RSA, assistenza domiciliare anziani" },
+        { "sigla": "B1", "nome": "Livello B1 - Operatori Socio Assistenziali (OSA), Ausiliari", "lordo_mensile": 1530.00, "mansioni": "Assistenti generici, addetti all'igiene personale" },
+        { "sigla": "A1", "nome": "Livello A1 - Addetti alle pulizie, ausiliari generici", "lordo_mensile": 1420.00, "mansioni": "Sanificazione ambienti, lavanderia, scodellamento pasti" }
+      ]
+    },
+    {
+      "id": "sanita_privata",
+      "nome": "CCNL Sanità Privata e Cliniche (AIOP / ARIS)",
+      "gruppo": "Sanità & Sociale",
+      "mensilita": 13,
+      "settore": "Ospedali privati accreditati, Cliniche riabilitative, Centri diagnostici",
+      "livelli": [
+        { "sigla": "DS", "nome": "Livello DS - Capisala, Coordinatori infermieristici", "lordo_mensile": 2390.00, "mansioni": "Coordinamento reparti degenza" },
+        { "sigla": "D", "nome": "Livello D - Infermieri, Tecnici radiologia/laboratorio", "lordo_mensile": 2080.00, "mansioni": "Assistenza clinica, somministrazione terapie" },
+        { "sigla": "C", "nome": "Livello C - Operatori Socio Sanitari (OSS specializzati)", "lordo_mensile": 1780.00, "mansioni": "Supporto al paziente in corsia e sala operatoria" },
+        { "sigla": "B", "nome": "Livello B - Ausiliari sanitari, Barellieri", "lordo_mensile": 1590.00, "mansioni": "Trasporto degenti, sanificazione reparto" }
+      ]
+    },
+    {
+      "id": "credito_banche",
+      "nome": "CCNL Credito e Settore Bancario (ABI)",
+      "gruppo": "Banche, Assicurazioni & IT",
+      "mensilita": 13,
+      "settore": "Banche, Istituti di Credito, Finanziarie, SGR",
+      "livelli": [
+        { "sigla": "QD4", "nome": "Quadro Direttivo 4° Livello - Direttori di filiale grandi sedi", "lordo_mensile": 3480.00, "mansioni": "Direzione strategica di filiale, impieghi corporate" },
+        { "sigla": "QD2", "nome": "Quadro Direttivo 2° Livello - Gestori Private Banker / Corporate", "lordo_mensile": 2980.00, "mansioni": "Gestione patrimoni e consulenza fidi" },
+        { "sigla": "3A4L", "nome": "3° Area 4° Livello - Gestori retail, Specialisti mutui", "lordo_mensile": 2580.00, "mansioni": "Consulenza investimenti famiglie, erogazione prestiti" },
+        { "sigla": "3A2L", "nome": "3° Area 2° Livello - Operatori di sportello / Cassa", "lordo_mensile": 2240.00, "mansioni": "Operatività bancaria ordinaria, bonifici, assegni" }
+      ]
+    },
+    {
+      "id": "assicurazioni",
+      "nome": "CCNL Imprese di Assicurazione (ANIA)",
+      "gruppo": "Banche, Assicurazioni & IT",
+      "mensilita": 14,
+      "settore": "Compagnie assicurative, Agenzie generali, Broker",
+      "livelli": [
+        { "sigla": "6", "nome": "6° Livello - Funzionari e Liquidatori sinistri senior", "lordo_mensile": 2920.00, "mansioni": "Perizie complesse, contenziosi assicurativi" },
+        { "sigla": "4", "nome": "4° Livello - Liquidatori sinistri / Assuntori rischi", "lordo_mensile": 2360.00, "mansioni": "Gestione sinistri RCA e rami elementari" },
+        { "sigla": "3", "nome": "3° Livello - Impiegati tecnici e commerciali di agenzia", "lordo_mensile": 1960.00, "mansioni": "Emissione polizze, preventivi, back-office" },
+        { "sigla": "2", "nome": "2° Livello - Addetti all'assistenza clienti e front-office", "lordo_mensile": 1740.00, "mansioni": "Accoglienza clienti, incasso quietanze" }
+      ]
+    },
+    {
+      "id": "telecomunicazioni_it",
+      "nome": "CCNL Telecomunicazioni e Information Technology",
+      "gruppo": "Banche, Assicurazioni & IT",
+      "mensilita": 13,
+      "settore": "Software house, IT consulting, Call center, Provider TLC",
+      "livelli": [
+        { "sigla": "7", "nome": "7° Livello - Tech Lead, Architetti Software", "lordo_mensile": 2850.00, "mansioni": "Software architect, lead developer, datacenter manager" },
+        { "sigla": "6", "nome": "6° Livello - Senior Developer, Project Manager", "lordo_mensile": 2510.00, "mansioni": "Sviluppatori senior, sistemisti cloud, security engineer" },
+        { "sigla": "5", "nome": "5° Livello - Mid Software Developer, Analisti", "lordo_mensile": 2180.00, "mansioni": "Programmatori full-stack, analisti QA, DevOps junior" },
+        { "sigla": "4", "nome": "4° Livello - Junior Developer, Sistemisti Junior", "lordo_mensile": 1910.00, "mansioni": "Sviluppatori junior, tecnici assistenza hardware/software" },
+        { "sigla": "3", "nome": "3° Livello - Help Desk tecnico, Operatori NOC", "lordo_mensile": 1720.00, "mansioni": "Help desk 1° e 2° livello, monitoraggio reti" },
+        { "sigla": "2", "nome": "2° Livello - Operatori Contact Center inbound", "lordo_mensile": 1540.00, "mansioni": "Addetti call center, assistenza clienti base" }
+      ]
+    }
+  ]
+}
